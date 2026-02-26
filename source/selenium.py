@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def elan_datasi(product_id):
-    url = f"https://tap.az/product/{product_id}"
+    url = f"https://tap.az/elanlar/elektronika/telefonlar/{product_id}"
 
     options = Options()
     options.add_argument("--headless")

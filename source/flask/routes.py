@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from source.selenium import elan_datasi
+from source import selenium
 
 app = Flask(__name__)
 
@@ -29,7 +29,7 @@ def category(cat_id):
 
 @app.route("/products/<int:product_id>", methods=["GET"])
 def get_products(product_id):
-    data = elan_datasi(product_id)
+    data = selenium.elan_datasi(product_id)
     return jsonify(data)
 
 @app.route("/products", methods=["POST"])
