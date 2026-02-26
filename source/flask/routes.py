@@ -1,7 +1,5 @@
-from flask import Flask, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask import Flask, jsonify
+from source.selenium import elan_datasi
 
 app = Flask(__name__)
 
@@ -14,7 +12,6 @@ def login():
     pass
 
 @app.route("/auth/me", methods=["GET"])
-@jwt_required()
 def me():
     pass
 
@@ -23,31 +20,27 @@ def get_categories():
     pass
 
 @app.route("/categories", methods=["POST"])
-@jwt_required()
 def create_category():
     pass
 
 @app.route("/categories/<int:cat_id>", methods=["GET", "PUT", "DELETE"])
-@jwt_required()
 def category(cat_id):
     pass
 
-@app.route("/products", methods=["GET"])
-def get_products():
-    pass
+@app.route("/products/<int:product_id>", methods=["GET"])
+def get_products(product_id):
+    data = elan_datasi(product_id)
+    return jsonify(data)
 
 @app.route("/products", methods=["POST"])
-@jwt_required()
 def create_product():
     pass
 
 @app.route("/products/<int:pid>", methods=["GET", "PUT", "DELETE"])
-@jwt_required()
 def product(pid):
     pass
 
 @app.route("/products/my", methods=["GET"])
-@jwt_required()
 def my_products():
     pass
 
